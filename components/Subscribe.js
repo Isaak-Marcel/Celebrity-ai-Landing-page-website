@@ -58,10 +58,9 @@ function Subscribe() {
             console.log(priceId)
             console.log('check out should start')
             const docRef = await addDoc(collection(db, "customers", user.uid, "checkout_sessions"), {
-            currency: 'usd',
             price: priceId,
             success_url: 'https://folketskebab.se/',
-            cancel_url: 'https://folketskebab.se/',
+            cancel_url: 'https://youtubethumbnailtester.com/',
             });
 
 
@@ -87,65 +86,78 @@ function Subscribe() {
 
     
     
-   const handleSubscribe = () =>{
+   const handleSubscribe = (g) =>{
         if(user){
-            console.log('send to stirep')
+            checkOut(g)
         }else{
-            console.log('show login true')
+            console.log('show signUp true')
             setShowsignup(true)
+            
         }
    }
    const hLogin = ()=>{
         if(user) {
         }else{
+            console.log('fwafwa')
         setShowLogin(true)
         }
     }
-    const close = ()=>{
+    const close = (x)=>{
         setShowLogin(false)
         setShowsignup(false)
+        if(x ==='login'){
+            setShowLogin(true)
+            console.log('showed show login')
+        }else if(x ==='signup'){
+            setShowsignup(true)
+        }
     }
    
     
   return (
-    <div className='container p-8 mx-auto xl:px-0 flex flex-wrap mb-20 lg:gap-10 lg:flex-nowrap'>
-        {showLogin && <Login close={close} />}
-        {showSignup && <Signup close={close}/>}
-        <div className='flex justify-evenly w-full'>
-            <div className='mr-96'>
-                <h1>9 dollars a month: this is your profil:{ user && user.email}  </h1>
-                {currentUser && <div >Welcome, {currentUser.email}!</div>}
-            </div>
-            <div className=''>
-                <button
-                        href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
-                        target="_blank"
-                        
-                        rel="noopener"
-                        onClick={()=> handleSubscribe()}
-                        className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md ">Subscribe
-                </button>
-                <button 
-                    href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
-                    target="_blank"
-                    rel="noopener"
-                    className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md ml-11 "
-                    onClick={()=>hLogin()}
-                    >
-                    Log in
-                </button>
-                {Object.entries(sProducts).map(([productId, productData])=>{
-                    console.log(productData.prices.priceId)
-                return (
-                    <div className="outline-teal-100" key={productId}>
-                        <div>{productData.name} - {productData.description}</div>
-                        <button className="logButton bg-lime-500 " onClick={ () => checkOut(productData.prices.priceId) }>Subscribe stirpe</button>
+    <>
+    { (showSignup || showLogin) && <div className={`flex z-10 justify-center top-0 items-center fixed w-full h-screen ${showSignup || showLogin ? 'blur-background' : ''}`}>
+                        {showLogin && <Login close={close} />}
+                        {showSignup && <Signup close={close} />}
+         </div>  }
+        
+    
+    <div className='container p-8 mx-auto xl:px-0 mb-20 lg:gap-10 flex justify-center '>
+        
+        <div className=' bg-my-orange rounded-lg w-5/12 flex-col justify-center items-center ' >   
+          
+                    <h1 className='text-2xl font-bold text-center pt-5'>Subscribe</h1>
+                    <div className='p-4 flex-col items-center flex'> 
+                        <div>
+                        <h1 className=''>All features For 9$ a Month{/* user && user.email*/}  </h1>
+                        <ul className='max-w-md space-y-1 text'>
+                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 dark:text-aaaaa-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Imporve Text </li>
+                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 dark:text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Fix Spelling </li>
+                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 dark:text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Contiune Text </li>
+                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 dark:text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                Find synonyms and best fits </li>
+                        </ul>
+                        </div>
                     </div>
-                )
-                })}
+                    <div className='pb-20 flex '>
+                        {currentUser && <span >Welcome, {currentUser.email}!</span>} 
+                        {Object.entries(sProducts).map(([productId, productData])=>{
+                            console.log(productData.prices.priceId)
+                            return (
+                                <div className="outline-teal-100 mr-auto ml-auto flex flex-col" key={productId}>
+                                    <div className=' pb-4'>{productData.name} - {productData.description}</div>
+                                    <button className="logButton bg-orange-600 rounded p-3 " onClick={() => handleSubscribe(productData.prices.priceId)}>Subscribe for 9dollar/month</button>
+                                </div>
+                            )
+                        })}                       
+                    </div>  
             </div>
-        </div>
     </div>
+    
+    </>
   )
 }
 

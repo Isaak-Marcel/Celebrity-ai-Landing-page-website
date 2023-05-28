@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Hero from "../components/hero";
-import Navbar from "../components/navbar";
+import Navbar, { Popups } from "../components/navbar";
 import SectionTitle from "../components/sectionTitle";
 
 import { benefitOne, benefitTwo } from "../components/data";
@@ -12,17 +12,34 @@ import Cta from "../components/cta";
 import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
 import Subscribe from "../components/Subscribe"
+import { useContext, useState } from "react";
 
 import { AuthProvider } from "../components/AuthContext";
-
+import Login from "../components/Login";
+import Signup from "../components/Signup";
 
 
 
 
 const Home = () => {
+  const [sl, setSl] = useState(false)
+  const [ss,setSs] = useState(false)
+
+  
+
+  const close = (x)=>{
+      setSl(false)
+      setSs(false)
+      if(x ==='login'){
+          setSl(true)
+      }else if(x ==='signup'){
+          setSs(true)
+      }
+  }
  
   return (
     <>
+        
         <Head>
           <title>Nextly - Free Nextjs & TailwindCSS Landing Page Template</title>
           <meta
@@ -31,10 +48,19 @@ const Home = () => {
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+      
      
       <AuthProvider>
-        <Navbar />
-        <Hero />
+        {(ss || sl) && <div className={`flex justify-center items-center fixed h-screen w-full ${ss || sl ? 'blur-background' : ''}`}>
+          {sl && <Login close={close}/>}
+          {ss && <Signup close={close}/> }
+        </div>}
+        <Navbar ss={ss} sl={sl} setSl={setSl} setSs={setSs}/>
+        <Hero> 
+          
+        </Hero>
+        
+    
         <SectionTitle
           pretitle="Nextly Benefits"
           title="Celerity-Ai text enhancer's features">

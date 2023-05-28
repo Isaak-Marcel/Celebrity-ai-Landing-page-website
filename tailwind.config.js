@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         trueGray: colors.neutral,
+        'my-orange': 'rgba(255, 198, 99, 1)'
       },
     },
     fontFamily: {

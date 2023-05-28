@@ -28,24 +28,20 @@ function Signup({close}) {
         })
 
     }
-    
- 
-    return (
-    <div >
-       <div className='sign-div'>
-          <h2>Sign Up</h2>
-          <form className='signForm'>
-            <input  type='email' placeholder="Email" onChange={(e)=> setNewUser( {...newUser, email: e.target.value} )}/>
-            <input  type='password' placeholder="Password" onChange={(e)=> setNewUser( {...newUser, password: e.target.value})}/>
-            <button  onClick={(e) => submitSignUp(e)}>Sign Up</button>
-          </form>
-          <div style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column', alignItems: 'center'}} className='buttons-under'>
-            <button >Have an account, Login in?</button>
-            <button  className='close-button' onClick={()=>close()} >Close</button>
-          </div>
-        </div>
+  return (
+    <div className='popup'>
+      <h2>Sign Up</h2>
+      <form>
+        <input type='email' placeholder="Email" onChange={(e) => setNewUser({...newUser, email: e.target.value})} />
+        <input type='password' placeholder="Password" onChange={(e) => setNewUser({...newUser, password: e.target.value})} />
+        <button className='w-full p-2 mt-4 text-white bg-orange-500 rounded-md hover:bg-orange-600;' onClick={(e) => submitSignUp(e)}>Sign Up</button>
+      </form>
+      <div className='buttons-under'>
+        <button onClick={()=>{console.log('daw'); close('login')}}>Have an account? Login</button>
+        <button className='close-button' onClick={() => close()}>Close</button>
+      </div>
     </div>
-  ) 
+  )
 }
 
 export default Signup

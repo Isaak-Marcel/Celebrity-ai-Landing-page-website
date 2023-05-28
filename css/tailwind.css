@@ -7,4 +7,38 @@
   body {
     @apply dark:bg-trueGray-900;
   }
+  .blur-background {
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .popup {
+    position: fixed;
+    height: 60vh;
+    width: 800px;
+    @apply bg-my-orange;
+    font-size: 25px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .popup h2 {
+    @apply text-2xl font-bold p-4;
+  }
+  .popup form {
+    @apply flex-col flex items-center mt-4;
+  }
+  .popup input {
+    @apply w-full p-2 my-2 border border-gray-300 rounded-md;
+  }
+  .close-button {
+    @apply ml-4;
+  }
+  .buttons-under{
+    @apply flex flex-col m-6 
+  }
+  .buttons-under button{
+    @apply hover:opacity-60 m-2
+  }
 }
