@@ -168,7 +168,7 @@ const Navbar = ({ss,setSs,sl,setSl}) => {
             onClick={() => {if(currentUser){hLogOut()}else{setSl(true)} }}>
              
             {currentUser &&  <h3>Log out</h3> }
-            {!currentUser && <h3>Log in</h3>}
+            {!currentUser && <h3>Log in / Sign up</h3>}
              
             
           </button>

@@ -11,7 +11,7 @@ import Signup from './Signup';
 import Login from './Login';
 
 
-function SubButton({plan,text}) {
+function SubButton({plan,text='Subscribe'}) {
      const [user, setUser] = useAuthState(auth)  
     const [sProducts, setProducts] = useState([])
 
@@ -113,7 +113,7 @@ function SubButton({plan,text}) {
                         {showLogin && <Login close={close} />}
                         {showSignup && <Signup close={close} />}
          </div>  }
-            <button className="logButton bg-orange-600 rounded p-3 " onClick={() => handleSubscribe()}>Subscribe</button>
+            <button className="logButton bg-orange-600 rounded p-3 " onClick={() => handleSubscribe()}>{text} </button>
         </>
   )
 }

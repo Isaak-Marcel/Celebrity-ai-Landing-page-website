@@ -62,24 +62,25 @@ const Home = () => {
         
     
         <SectionTitle
-          pretitle="Nextly Benefits"
-          title="Celerity-Ai text enhancer's features">
-          Nextly is a free landing page & marketing website template for startups
-          and indie projects. Its built with Next.js & TailwindCSS. And its
-          completely open-source.
+          pretitle="Text Enhancer"
+          title="Improve, check and speed up writing ">
+         
+         Our text enhancer chrome extension lets you use different features to improve your work speed such 
+         as Improve text, Spell Fix, find best fitting word, continue the text.
+         
         </SectionTitle>
         <Benefits data={benefitOne} />
-        <Benefits imgPos="right" data={benefitTwo} />
+        {/* <Benefits imgPos="right" data={benefitTwo} /> */}
         <Subscribe/>
         <SectionTitle
-          pretitle="Watch a video"
+          pretitle="Full tutorial to get the most of the chrome extension video"
           title="Learn how to fullfil your needs">
           This section is to highlight a promo or demo video of your product.
           Analysts says a landing page with video has 3% more conversion rate. So,
           don&apos;t forget to add one. Just like this.
         </SectionTitle>
         <Video />
-        <SectionTitle
+        {/* <SectionTitle
           pretitle="Testimonials"
           title="Here's what our customers said">
           Testimonails is a great way to increase the brand trust and awareness.
@@ -91,7 +92,7 @@ const Home = () => {
           conversion rate as well as support or chat requests.
         </SectionTitle>
         <Faq />
-        <Cta />
+        <Cta /> */}
         <Footer />
         <PopupWidget />
       </AuthProvider>
