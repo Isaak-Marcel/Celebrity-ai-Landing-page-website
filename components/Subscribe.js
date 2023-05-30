@@ -20,70 +20,10 @@ function Subscribe() {
     const [showLogin, setShowLogin] = useState(false)
     const [showSignup, setShowsignup] = useState(false)
     const { currentUser, subscriptionStatus } = useContext(AuthContext);
-    const [sProducts, setProducts] = useState([])
+   
 
 
-    let products  = []
-    useEffect(() => {
-    const fetchProducts = async () => {
-        try {
-        const querySnapshot = await getDocs(collection(db, 'products'));
-        querySnapshot.forEach(async (doc) => {
-            const data = doc.data();
-            if (data) {
-                products[doc.id] = data
-                console.log(products);
-                const priceSnapshot = await getDocs(collection(doc.ref, 'prices'))
-                priceSnapshot.forEach(priceDoc=>{
-                    products[doc.id].prices = {
-                        priceId: priceDoc.id,
-                        priceData: priceDoc.data
-                    }
-                })
-            }
-            setProducts(products)
-            console.log(products)
-            console.log(sProducts)
-        });
-        } catch (error) {
-        console.error('Error fetching products:', error);
-        }
-    };
-    fetchProducts();
-    }, []);
-    useEffect(() => {
-        console.log(sProducts);
-    }, [sProducts]);
-    const checkOut = async (priceId) => {
-        try {
-            console.log(priceId)
-            console.log('check out should start')
-            const docRef = await addDoc(collection(db, "customers", user.uid, "checkout_sessions"), {
-            price: priceId,
-            success_url: 'https://folketskebab.se/',
-            cancel_url: 'https://youtubethumbnailtester.com/',
-            });
-
-
-            onSnapshot(docRef, async (snap) => {
-            const { error, sessionId } = snap.data();
-                if (error) {
-                alert(error.message);
-                console.log('eroor'+error)
-                }
-                if(sessionId){
-                    console.log('sesstion id true 1')
-                    const stripe = await loadStripe("pk_test_51LdzdtHtWj5EzN1V0rBhWmxZqutL5rANYloS28yMQjljP36Yu9LzLhbEIuM3Jb2JlAkjOX9dwZC1iWoSIhV5IX3500J2sW5Uqv")
-                    stripe.redirectToCheckout({ sessionId: sessionId });
-                    console.log('sesstion id true')
-                }
-                console.log('it seems to have worked?')
-            })
-        }
-        catch (error) {
-            console.error("Error creating checkout session:", error);
-        }
-    }
+    
 
     
     

@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [subscriptionStatus, setSubscriptionStatus] = useState(false);
  
-  const subscriptionId = 'sub_1NC7weHtWj5EzN1VKGYi1LPG'
+  const subscriptionId = 'sub_1NDaJmHtWj5EzN1VHGKbpvum'
 
   useEffect(() => {
       const fetchSubscriptionStatus = async () => {
