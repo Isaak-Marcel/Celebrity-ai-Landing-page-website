@@ -62,8 +62,8 @@ function SubButton({plan='paid',text='Subscribe', send='checkOut' , style} ) {
             console.log('check out should start')
             const docRef = await addDoc(collection(db, "customers", user.uid, "checkout_sessions"), {
             price: priceId,
-            success_url: 'https://folketskebab.se/',
-            cancel_url: 'https://youtubethumbnailtester.com/',
+            success_url: 'https://celerity-ai.com/',
+            cancel_url: 'https://celerity-ai.com/',
             });
 
 
@@ -76,7 +76,7 @@ function SubButton({plan='paid',text='Subscribe', send='checkOut' , style} ) {
                 }
                 if(sessionId){
                     console.log('sesstion id true 1')
-                    const stripe = await loadStripe("pk_test_51LdzdtHtWj5EzN1V0rBhWmxZqutL5rANYloS28yMQjljP36Yu9LzLhbEIuM3Jb2JlAkjOX9dwZC1iWoSIhV5IX3500J2sW5Uqv")
+                    const stripe = await loadStripe("pk_live_51LdzdtHtWj5EzN1VKRGp7c7KdswVvwGPYZ7qOVd6Zsh764y6ZoebRUXR4Hhx2lU8cnuaGruYJZtg4Ny77cM5dPxW00nIF93bAN")
                     setLoading(false);
                     stripe.redirectToCheckout({ sessionId: sessionId });
                     console.log('sesstion id true')
@@ -122,7 +122,7 @@ function SubButton({plan='paid',text='Subscribe', send='checkOut' , style} ) {
         else if(user){
             console.log('should ehck out')
             if(plan === 'paid'){
-            checkOut('price_1NBkNQHtWj5EzN1VENuw7VIl').catch((er)=>{console.log(er)})
+            checkOut('price_1NDZxoHtWj5EzN1VuF0nzK3c').catch((er)=>{console.log(er)})
             }else if(plan === 'free'){
                 console.log('checkOut free plan')
             }

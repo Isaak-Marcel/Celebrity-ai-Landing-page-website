@@ -136,7 +136,7 @@ const Navbar = ({ss,setSs,sl,setSl}) => {
         </div>
        
           
-          <div className="hidden sm:hidden s md:hidden lg:block ">
+          <div className="hidden lg:flex sm:hidden s md:hidden ">
             {!subscriptionStatus && <SubButton plan={'paid'}/>}
             {subscriptionStatus && <SubButton text="Manage Subscription" send="toPortal"/>}
           </div>
