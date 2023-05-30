@@ -50,8 +50,8 @@ const Home = () => {
         </Head>
       
      
-      <AuthProvider>
-        {(ss || sl) && <div className={`flex justify-center items-center fixed h-screen w-full ${ss || sl ? 'blur-background' : ''}`}>
+      <AuthProvider >
+        {(ss || sl) && <div className={`flex z-10 justify-center top-0 items-center fixed w-screen h-screen right-0 ${ss || sl ? 'blur-background' : ''}`}>
           {sl && <Login close={close}/>}
           {ss && <Signup close={close}/> }
         </div>}

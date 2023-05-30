@@ -6,6 +6,7 @@
   html,
   body {
     @apply dark:bg-trueGray-900;
+    padding-top: 50px;
   }
   .blur-background {
     backdrop-filter: blur(8px);
@@ -15,7 +16,10 @@
     position: fixed;
     height: 60vh;
     width: 800px;
-    @apply bg-my-orange;
+    @apply bg-white;
+    @apply dark:bg-orange-950;
+    @apply dark:bg-trueGray-900;
+
     font-size: 25px;
     border-radius: 30px;
     display: flex;

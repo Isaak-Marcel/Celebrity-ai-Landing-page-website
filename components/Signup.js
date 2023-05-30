@@ -34,7 +34,7 @@ function Signup({close}) {
       <form>
         <input type='email' placeholder="Email" onChange={(e) => setNewUser({...newUser, email: e.target.value})} />
         <input type='password' placeholder="Password" onChange={(e) => setNewUser({...newUser, password: e.target.value})} />
-        <button className='w-full p-2 mt-4 text-white bg-orange-500 rounded-md hover:bg-orange-600;' onClick={(e) => submitSignUp(e)}>Sign Up</button>
+        <button className='w-full p-2 mt-4 text-white bg-orange-500 rounded-md hover:bg-orange-600 ;' onClick={(e) => submitSignUp(e)}>Sign Up</button>
       </form>
       <div className='buttons-under'>
         <button onClick={()=>{console.log('daw'); close('login')}}>Have an account? Login</button>

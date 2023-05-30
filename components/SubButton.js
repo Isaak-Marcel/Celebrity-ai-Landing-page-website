@@ -9,10 +9,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import {auth} from '../firebase'
 import Signup from './Signup';
 import Login from './Login';
+import { getFunctions, httpsCallable } from "firebase/functions";
+import { fireFunction } from '../firebase';
+import Spinner from './Spinner';
 
 
-function SubButton({plan,text='Subscribe'}) {
-     const [user, setUser] = useAuthState(auth)  
+function SubButton({plan='paid',text='Subscribe', send='checkOut'}) {
+    const [loading, setLoading] = useState(false);
+    const [user, setUser] = useAuthState(auth)  
     const [sProducts, setProducts] = useState([])
 
     const [showLogin, setShowLogin] = useState(false)
@@ -53,6 +57,7 @@ function SubButton({plan,text='Subscribe'}) {
     }, [sProducts]);
     const checkOut = async (priceId) => {
         try {
+            setLoading(true)
             console.log(priceId)
             console.log('check out should start')
             const docRef = await addDoc(collection(db, "customers", user.uid, "checkout_sessions"), {
@@ -65,12 +70,14 @@ function SubButton({plan,text='Subscribe'}) {
             onSnapshot(docRef, async (snap) => {
             const { error, sessionId } = snap.data();
                 if (error) {
-                alert(error.message);
-                console.log('eroor'+error)
+                    alert(error.message);
+                    console.log('eroor'+error)
+                    setLoading(false);
                 }
                 if(sessionId){
                     console.log('sesstion id true 1')
                     const stripe = await loadStripe("pk_test_51LdzdtHtWj5EzN1V0rBhWmxZqutL5rANYloS28yMQjljP36Yu9LzLhbEIuM3Jb2JlAkjOX9dwZC1iWoSIhV5IX3500J2sW5Uqv")
+                    setLoading(false);
                     stripe.redirectToCheckout({ sessionId: sessionId });
                     console.log('sesstion id true')
                 }
@@ -79,14 +86,43 @@ function SubButton({plan,text='Subscribe'}) {
         }
         catch (error) {
             console.error("Error creating checkout session:", error);
+            setLoading(false);
         }
     }
+    const customerPortal = async () => {
+        setLoading(true)
+        const functions = fireFunction;
+        const createPortalLink = httpsCallable(
+        functions,
+        "ext-firestore-stripe-payments-createPortalLink"
+        );
+
+        try {
+        const { data } = await createPortalLink({
+            returnUrl: window.location.origin,
+            locale: "auto",
+        });
+
+        window.location.assign(data.url);
+        } catch (error) {
+        console.error("Error creating customer portal link:", error);
+        }
+    };
 
     const handleSubscribe = () =>{
-        if(user){
+        
+        console.log(send)
+        if(send==='toPortal'){
+            console.log('send to portal')
+            customerPortal()
+            .catch((error) => {
+                console.log(error)
+            }).finally(() => setLoading(false))
+        }
+        else if(user){
             console.log('should ehck out')
             if(plan === 'paid'){
-            checkOut('price_1NBkNQHtWj5EzN1VENuw7VIl') // paid plan id 
+            checkOut('price_1NBkNQHtWj5EzN1VENuw7VIl').catch((er)=>{console.log(er)})
             }else if(plan === 'free'){
                 console.log('checkOut free plan')
             }
@@ -96,6 +132,7 @@ function SubButton({plan,text='Subscribe'}) {
             setShowsignup(true)
             
         }
+        
    }
     const close = (x)=>{
         setShowLogin(false)
@@ -113,7 +150,12 @@ function SubButton({plan,text='Subscribe'}) {
                         {showLogin && <Login close={close} />}
                         {showSignup && <Signup close={close} />}
          </div>  }
-            <button className="logButton bg-orange-600 rounded p-3 " onClick={() => handleSubscribe()}>{text} </button>
+            <button className="logButton bg-orange-600 rounded  p-3 text-black " onClick={() => handleSubscribe()}>{text} </button>
+            {loading ?  <Spinner/> :''}
+           
+          
+            
+           
         </>
   )
 }

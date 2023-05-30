@@ -19,7 +19,7 @@ const Hero = ({children}) => {
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
-              <div className="">
+              <div className="flex">
               <SubButton plan={'paid'} text={'Get all feaures for 9$/month'}/>
               </div>
               <a

@@ -9,6 +9,7 @@ import { db } from '../firebase'
 import { collection, addDoc, getDocs, getDoc,} from "firebase/firestore"
 import { onSnapshot } from 'firebase/firestore';
 import { loadStripe } from '@stripe/stripe-js';
+import SubButton from './SubButton';
 
 
 
@@ -18,7 +19,7 @@ function Subscribe() {
 
     const [showLogin, setShowLogin] = useState(false)
     const [showSignup, setShowsignup] = useState(false)
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser, subscriptionStatus } = useContext(AuthContext);
     const [sProducts, setProducts] = useState([])
 
 
@@ -124,36 +125,29 @@ function Subscribe() {
     
     <div className='container p-8 mx-auto xl:px-0 mb-20 lg:gap-10 flex justify-center '>
         
-        <div className=' bg-my-orange rounded-lg w-5/12 flex-col justify-center items-center ' >   
+        <div style={{height: '542px'}} className='flex justify-between bg-my-orange dark:bg-orange-950 rounded-lg w-5/12 flex-col items-center ' >   
           
-                    <h1 className='text-2xl font-bold text-center pt-5'>Subscribe</h1>
+                    <h1 className='text-4xl font-bold text-center pt-5'>Subscribe</h1>
                     <div className='p-4 flex-col items-center flex'> 
-                        <div>
-                        <h1 className=''>All features For 9$ a Month{/* user && user.email*/}  </h1>
+                        <div className='pb-20 xl:pr-32 xl:pl-32'>
+                        <h1 className='text-center text-xl pb-10'>You get all of the Celerity-AI text enhancer Featuers For 9$ a Month{/* user && user.email*/}  </h1>
                         <ul className='max-w-md space-y-1 text'>
-                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 dark:text-aaaaa-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500  flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                                 Imporve Text </li>
-                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 dark:text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500  flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                                 Fix Spelling </li>
-                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 dark:text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                                 Contiune Text </li>
-                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 dark:text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500  flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                                 Find synonyms and best fits </li>
                         </ul>
                         </div>
+                        <div class="flex pb-4">
+                               {subscriptionStatus ? <SubButton style={{}} text='Your Subscribed, Manege your subscitpiton here' /> : <SubButton /> }
+                        </div>
+                               {subscriptionStatus ? <span  className='text-center pr-10 pl-10 pt-2'> I would recocomned wahting somew tutrirals to beable to masmizr the efecitve ness of the exntetion</span> : ''}
                     </div>
-                    <div className='pb-20 flex '>
-                        {currentUser && <span >Welcome, {currentUser.email}!</span>} 
-                        {Object.entries(sProducts).map(([productId, productData])=>{
-                            console.log(productData.prices.priceId)
-                            return (
-                                <div className="outline-teal-100 mr-auto ml-auto flex flex-col" key={productId}>
-                                    <div className=' pb-4'>{productData.name} - {productData.description}</div>
-                                    <button className="logButton bg-orange-600 rounded p-3 " onClick={() => handleSubscribe(productData.prices.priceId)}>Subscribe for 9dollar/month</button>
-                                </div>
-                            )
-                        })}                       
-                    </div>  
+               
             </div>
     </div>
     
