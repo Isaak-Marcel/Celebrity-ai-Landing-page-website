@@ -14,7 +14,7 @@ import { fireFunction } from '../firebase';
 import Spinner from './Spinner';
 
 
-function SubButton({plan='paid',text='Subscribe', send='checkOut'}) {
+function SubButton({plan='paid',text='Subscribe', send='checkOut' , style} ) {
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useAuthState(auth)  
     const [sProducts, setProducts] = useState([])
@@ -150,7 +150,7 @@ function SubButton({plan='paid',text='Subscribe', send='checkOut'}) {
                         {showLogin && <Login close={close} />}
                         {showSignup && <Signup close={close} />}
          </div>  }
-            <button className="logButton bg-orange-600 rounded  p-3 text-black " onClick={() => handleSubscribe()}>{text} </button>
+            <button style={style} className="logButton bg-orange-600 rounded  p-3 text-black " onClick={() => handleSubscribe()}>{text} </button>
             {loading ?  <Spinner/> :''}
            
           

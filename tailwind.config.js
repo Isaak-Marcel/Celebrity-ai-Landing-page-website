@@ -11,6 +11,7 @@ module.exports = {
         trueGray: colors.neutral,
         'my-orange': 'rgba(255, 198, 99, 1)',
         'dark-orange': 'rgba(116,79,14,1)',
+        'lowOpsGray': 'rgba(23, 23, 23,0.4)'
       },
     },
     fontFamily: {

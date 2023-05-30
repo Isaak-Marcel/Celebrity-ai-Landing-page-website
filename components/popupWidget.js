@@ -116,7 +116,7 @@ const PopupWidget = () => {
                     <form onSubmit={handleSubmit(onSubmit)} noValidate>
                       <input
                         type="hidden"
-                        value="YOUR_ACCESS_KEY_HERE"
+                        value="9cc43381-2b1f-448e-b157-9129fd4bde5b"
                         {...register("apikey")}
                       />
                       <input
@@ -178,7 +178,7 @@ const PopupWidget = () => {
                               message: "Please enter a valid email",
                             },
                           })}
-                          placeholder="you@company.com"
+                          placeholder="Your Email"
                           className={`w-full px-3 py-2 text-gray-600 placeholder-gray-300 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring   ${
                             errors.email
                               ? "border-red-600 focus:border-red-600 ring-red-100"
@@ -249,16 +249,7 @@ const PopupWidget = () => {
                       <p
                         className="text-xs text-center text-gray-400"
                         id="result">
-                        <span>
-                          Powered by{" "}
-                          <a
-                            href="https://Web3Forms.com"
-                            className="text-gray-600"
-                            target="_blank"
-                            rel="noopener noreferrer">
-                            Web3Forms
-                          </a>
-                        </span>
+                      
                       </p>
                     </form>
                   )}

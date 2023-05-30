@@ -73,11 +73,8 @@ const Home = () => {
         {/* <Benefits imgPos="right" data={benefitTwo} /> */}
         <Subscribe/>
         <SectionTitle
-          pretitle="Full tutorial to get the most of the chrome extension video"
-          title="Learn how to fullfil your needs">
-          This section is to highlight a promo or demo video of your product.
-          Analysts says a landing page with video has 3% more conversion rate. So,
-          don&apos;t forget to add one. Just like this.
+          pretitle="Full tutorial to maximize productivity with the extension"
+          title="Learn how to the extension effectively">This is a video of me explaining the features of the extension, feel free to comment or send a message if you have suggestions for new features.
         </SectionTitle>
         <Video />
         {/* <SectionTitle
@@ -93,7 +90,7 @@ const Home = () => {
         </SectionTitle>
         <Faq />
         <Cta /> */}
-        <Footer />
+        {/* <Footer /> */}
         <PopupWidget />
       </AuthProvider>
     </>

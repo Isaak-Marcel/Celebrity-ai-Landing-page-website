@@ -3,6 +3,7 @@ import {signInWithEmailAndPassword   } from 'firebase/auth';
 import {auth} from '../firebase'
 
 function Login({close}) {
+  const [errorMessage, setErrorMessage] = useState(''); // new state variable for error messages
   const [loginUser,setloginUser] = useState({
         email: '',
         password: ''
@@ -16,6 +17,9 @@ function Login({close}) {
             close(close)
         })
         .catch((error) =>{
+         const errorMsg = error.message;
+         const cleanedErrorMsg = errorMsg.slice(errorMsg.indexOf(":") + 2, ); // slice the string to exclude unwanted parts
+          setErrorMessage(cleanedErrorMsg); // update the state with the error message
             // const errorCode = error.code;
             // const errorMessage = error.message;
         })
@@ -25,6 +29,7 @@ function Login({close}) {
   return (
     <div className='popup'>
       <h2>Login</h2>
+      {errorMessage && <p className=" text-red-300 text-center text-sl pl-20 pr-20 ">{errorMessage}</p>} {/* Display the error message when it exists */}
       <form className='flex flex-col'>
         <input  type='email' placeholder="Email" onChange={(e) => setloginUser({...loginUser, email: e.target.value})} />
         <input  type='password' placeholder="Password" onChange={(e) => setloginUser({...loginUser, password: e.target.value})} />

@@ -8,6 +8,19 @@
     @apply dark:bg-trueGray-900;
     padding-top: 50px;
   }
+  @media (max-width: 1024px) {
+    body {padding-top:78px;
+    }
+  }
+   @media (max-width: 369px) {
+    body {padding-top:90px;
+    }
+  }
+   @media (max-width: 359px) {
+    body {padding-top:120px;
+    }
+  }
+
   .blur-background {
     backdrop-filter: blur(8px);
     background-color: rgba(0, 0, 0, 0.5);
@@ -16,10 +29,10 @@
     position: fixed;
     height: 60vh;
     width: 800px;
-    @apply bg-white;
-    @apply dark:bg-orange-950;
-    @apply dark:bg-trueGray-900;
-
+    @apply bg-white  dark:bg-trueGray-900 lg:dark:bg-lowOpsGray lg:bg-white bg-transparent dark:bg-transparent  md:bg-transparent ; 
+    /* @apply dark:bg-orange-950;
+    @apply dark:bg-trueGray-900; */ 
+  
     font-size: 25px;
     border-radius: 30px;
     display: flex;
@@ -27,6 +40,18 @@
     align-items: center;
     padding: 20px;
   }
+  @media (max-width: 466px) {
+    .popup{
+      font-size: 18px
+    }
+  }
+   @media (max-width: 466px) {
+    .popup{
+      font-size: 14px
+    }
+  }
+
+  
   .popup h2 {
     @apply text-2xl font-bold p-4;
   }
@@ -45,4 +70,18 @@
   .buttons-under button{
     @apply hover:opacity-60 m-2
   }
+
+  .nav__item {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__item > :not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .nav__item--right {
+    margin-left: auto;
+  }
+
 }
