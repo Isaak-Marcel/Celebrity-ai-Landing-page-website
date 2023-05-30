@@ -1,24 +1,10 @@
 {
-  "name": "nextly-template",
-  "version": "0.1.0",
-  "description": "Nextly Landing Page Template",
-  "private": true,
+  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://gituhb.com/web3templates/nextly-template"
-  },
-  "keywords": [
-    "nextjs",
-    "tailwindcss",
-    "free"
-  ],
-  "author": "Surjith S M",
-  "license": "ISC",
   "dependencies": {
     "@emotion/css": "^11.10.6",
     "@emotion/react": "^11.10.6",

@@ -41,10 +41,10 @@ const Home = () => {
     <>
         
         <Head>
-          <title>Nextly - Free Nextjs & TailwindCSS Landing Page Template</title>
+          <title>Celerity-AI</title>
           <meta
             name="description"
-            content="Nextly is a free landing page template built with next.js & Tailwind CSS"
+            content="A Chrome extension which Improves text and corrects spelling using Ai"
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>
