@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { auth, db } from '../firebase'; // Import the Firebase auth instance
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc, getDocs, query, collection } from 'firebase/firestore';
+
 
 
 const AuthContext = createContext();
@@ -15,32 +16,40 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [subscriptionStatus, setSubscriptionStatus] = useState(false);
  
-  const subscriptionId = 'sub_1NDbScHtWj5EzN1V6y4Pzk7s'
+  
 
   useEffect(() => {
-      const fetchSubscriptionStatus = async () => {
-          try {
-              if (currentUser) {
-                  const docRef = doc(db, "customers", currentUser.uid, "subscriptions", subscriptionId);
-                  const docSnap = await getDoc(docRef);
+    const fetchSubscriptionStatus = async () => {
+      try {
+        if (currentUser) {
+          // Get the list of subscriptions associated with the current user
+          const subscriptionsQuery = query(collection(db, "customers", currentUser.uid, "subscriptions"));
+          const querySnapshot = await getDocs(subscriptionsQuery);
 
-                  if (docSnap.exists()) {
-                      const subscriptionData = docSnap.data();
-                      const { status } = subscriptionData;
-                      setSubscriptionStatus(status === 'active'); // Assuming 'active' is the status for an active subscription
-                  } else {
-                      setSubscriptionStatus(false); // Reset to false when there is no subscription
-                  }
-              } else {
-                  setSubscriptionStatus(false); // Reset to false when there is no user
-              }
-          } catch (error) {
-              console.error("Error fetching subscription status:", error);
-          }
-      };
+          // Iterate over each subscription and check their status
+          querySnapshot.forEach((doc) => {
+            const subscriptionData = doc.data();
+            const { status } = subscriptionData;
+            console.log("sub data", subscriptionData)
 
-      fetchSubscriptionStatus();
-  }, [currentUser])
+            // If any of the subscriptions is active, set subscription status to true
+            if (status === 'active') {
+              setSubscriptionStatus(true);
+              return;
+            }
+          });
+        } else {
+          setSubscriptionStatus(false); // Reset to false when there is no user
+        }
+      } catch (error) {
+        console.error("Error fetching subscription status:", error);
+      }
+    };
+
+    fetchSubscriptionStatus();
+  }, [currentUser]); // Add currentUser as a dependency so that the effect runs whenever currentUser changes
+
+  
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

@@ -43,8 +43,8 @@ function SubButton({plan='paid',text='Subscribe', send='checkOut' , style} ) {
                 })
             }
             setProducts(products)
-            console.log(products)
-            console.log(sProducts)
+            // console.log(products)
+            // console.log(sProducts)
         });
         } catch (error) {
         console.error('Error fetching products:', error);
@@ -58,7 +58,7 @@ function SubButton({plan='paid',text='Subscribe', send='checkOut' , style} ) {
     const checkOut = async (priceId) => {
         try {
             setLoading(true)
-            console.log(priceId)
+            // console.log(priceId)
             console.log('check out should start')
             const docRef = await addDoc(collection(db, "customers", user.uid, "checkout_sessions"), {
             price: priceId,
@@ -81,7 +81,7 @@ function SubButton({plan='paid',text='Subscribe', send='checkOut' , style} ) {
                     stripe.redirectToCheckout({ sessionId: sessionId });
                     console.log('sesstion id true')
                 }
-                console.log('it seems to have worked?')
+                // console.log('it seems to have worked?')
             })
         }
         catch (error) {
