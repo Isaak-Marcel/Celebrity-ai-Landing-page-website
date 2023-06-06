@@ -90,7 +90,7 @@ const Home = () => {
         </SectionTitle>
         <Faq />
         <Cta /> */}
-        {/* <Footer /> */}
+        <Footer />
         <PopupWidget />
       </AuthProvider>
     </>

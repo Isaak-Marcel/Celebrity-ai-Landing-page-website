@@ -2,15 +2,38 @@ import Image from "next/image";
 import Container from "./container";
 import heroImg from "../public/img/hero.png";
 import SubButton from "./SubButton";
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from './AuthContext';
 import Link from 'next/link';
 
-const Hero = ({children}) => {
+
+function VideoPlayer({ src }) {
+  const [hovered, setHovered] = useState(false);
+  const videoRef = useRef();
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.volume = 0.1; // sets volume to 50%
+    }
+  }, []);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{ position: "relative", width: "100%", height: "100%" }}
+    >
+      <video ref={videoRef} src={src} loop autoPlay muted controls={hovered} style={{ width: "100%", height: "100%" }} />
+    </div>
+  );
+}
+
+
+const Hero = ({ children }) => {
   const { currentUser, subscriptionStatus } = useContext(AuthContext);
+  
   return (
     <>
-      <Container className="flex flex-wrap ">
+      <Container className="flex flex-wrap heroPage">
         {children}
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
@@ -18,44 +41,40 @@ const Hero = ({children}) => {
               Celerity-Ai
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-              We make you more productive with the help of AI. Speed up your work flow and stop wasting time on meaningless tasks when writing. 
+              We make you more productive with the help of AI. Speed up your work flow and stop wasting time on meaningless tasks when writing.
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
               <div className="flex">
-              {/* <SubButton plan={'paid'} text={'Get all feaures for 9$/month'}/> */}
-              <div className="w-full flex">
-                         {!subscriptionStatus && <SubButton text="Get all feaures for 9$/month" plan={'paid'}/>}
-                          {subscriptionStatus && <SubButton  text="Manage Subscription" send="toPortal"/>}
+                {/* <SubButton plan={'paid'} text={'Get all feaures for 9$/month'}/> */}
+                <div className="w-full flex">
+                  {!subscriptionStatus && <SubButton text="Get all feaures for 9$/month" plan={'paid'} />}
+                  {subscriptionStatus && <SubButton text="Manage Subscription" send="toPortal" />}
+                </div>
               </div>
-              </div>
-            <div class="hover:text-orange-400 transition-transform duration-500 ease-in-out hover:translate-x-1">
-              <a
-                href="https://github.com/web3templates/nextly-template/"
-                target="_blank"
-                rel="noopener"
-                className="flex items-center space-x-2 text-black dark:text-white transition-colors duration-500 ease-in-out ">
-                <span className="hover:text-orange-400 transition-transform duration-500 ease-in-out hover:translate-x-1"> Link to the chrome extension </span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition-transform duration-500 hover:text-orange-400  ease-in-out hover:translate-x-1">
+              <div class="hover:text-orange-400 transition-transform duration-500 ease-in-out hover:translate-x-1  ">
+                <a
+                  href="https://github.com/web3templates/nextly-template/"
+                  target="_blank"
+                  rel="noopener"
+                  className="flex items-center space-x-2 text-black dark:text-white transition-colors duration-500 ease-in-out w-auto  ">
+                  <span className="hover:text-orange-400 spanThing transition-transform duration-500 ease-in-out hover:translate-x-1"> Link to the chrome extension </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition-transform duration-500 hover:text-orange-400  ease-in-out hover:translate-x-1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg >
-              </a>
-            </div>
+                  </svg >
+                </a>
+              </div>
 
             </div>
           </div>
         </div>
         <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div className="">
-            <Image
-              src={heroImg}
-              width="616"
-              height="617"
-              className={"object-cover"}
-              alt="Hero Illustration"
-              loading="eager"
-              placeholder="blur"
-            />
+          <div className=" ">
+            {/* <h2 className="text-xl font-semibold leading-snug tracking-tight text-gray-800 lg:text-2xl lg:leading-tight xl:text2xl xl:leading-tight dark:text-white pb-10 ">This video shows 3 of our features Correct spelling, Imrpove Text and find best match</h2> */}
+            <img>
+            </img>
+            <VideoPlayer src='/videos/1920x1080 clean video Compressed.mp4'/>
+       
           </div>
         </div>
       </Container>

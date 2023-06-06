@@ -1,6 +1,5 @@
 import React from 'react'
 import { useContext, useState, useEffect } from 'react';
-import { AuthContext } from './AuthContext';
 import { db } from '../firebase'
 import { collection, addDoc, getDocs, getDoc,} from "firebase/firestore"
 import { onSnapshot } from 'firebase/firestore';

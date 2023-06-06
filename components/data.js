@@ -13,12 +13,12 @@ import benefitTwoImg from "../public/img/benefit-two.png";
 const benefitOne = {
   title: "Some of our text operations",
   desc: `All of the following operations can be done by highlighting and right-clicking, or using a keyboard shortcut.
-  They can all increase productivity massively if used correctly. `,
+  They can all increase productivity massively if used correctly. (you can customize all the keyboard shortcuts)`,
   image: benefitOneImg,
   bullets: [
     {
       title: "Fix all spelling",
-      desc: "Highlight the text and right-click to choose spell fix and fix all of the spelling mistakes at once. (ctrl+shift+s)",
+      desc: "Highlight the text and right-click to choose spell fix and fix all of the spelling mistakes at once. (ctrl+alt+s)",
       icon: <FaceSmileIcon />,
     },
     {
@@ -28,7 +28,7 @@ const benefitOne = {
     },
     {
       title: "Replace Best Fit",
-      desc: "Allows you to replace something with x and find the best matching word for x. Can be used to find for example find synonyms. (crl) ",
+      desc: "Allows you to replace something with x and find the best matching word for x. Can be used to find synonyms. (shift+crl +f) ",
       icon: <CursorArrowRaysIcon />,
     },
   ],
