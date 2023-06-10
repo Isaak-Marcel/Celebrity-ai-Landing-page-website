@@ -54,7 +54,7 @@ const Hero = ({ children }) => {
               </div>
               <div class="hover:text-orange-400 transition-transform duration-500 ease-in-out hover:translate-x-1  ">
                 <a
-                  href="https://github.com/web3templates/nextly-template/"
+                  href="https://chrome.google.com/webstore/detail/celerity-ai-text-enhancer/mclglhhdcddjoepaloaednfmaceoinpk?hl=en"
                   target="_blank"
                   rel="noopener"
                   className="flex items-center space-x-2 text-black dark:text-white transition-colors duration-500 ease-in-out w-auto  ">

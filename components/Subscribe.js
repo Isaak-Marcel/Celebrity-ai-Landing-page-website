@@ -69,7 +69,7 @@ function Subscribe() {
                         </div>
                         <div class=" border-2 border-gray-950 p-2 rounded mb-5 dark:hover:text-orange-400 hover:hover:text-orange-800 font-semibold  transition-transform duration-500 ease-in-out hover:translate-x-1">
                             <a
-                                href="https://github.com/web3templates/nextly-template/"
+                                href="https://chrome.google.com/webstore/detail/celerity-ai-text-enhancer/mclglhhdcddjoepaloaednfmaceoinpk?hl=en"
                                 target="_blank"
                                 rel="noopener"
                                 className="flex items-center space-x-2 transition-colors duration-500 ease-in-out ">
