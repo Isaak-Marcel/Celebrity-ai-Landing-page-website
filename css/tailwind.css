@@ -69,7 +69,10 @@
     }
   }
 
-  
+  .popup{
+    display: flex;
+    justify-content: center;
+  }
   .popup h2 {
     @apply text-2xl font-bold p-4;
   }
@@ -78,6 +81,10 @@
   }
   .popup input {
     @apply w-full p-2 my-2 border border-gray-300 rounded-md;
+    width: 400px;
+  }
+  .popup form button{
+      width: 300px
   }
   .close-button {
     @apply ml-4;

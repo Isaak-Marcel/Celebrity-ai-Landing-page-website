@@ -1,6 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import Container from "./container";
+import { VideoPlayer } from "./hero";
+
+
 
 const Benefits = (props) => {
   const { data } = props;
@@ -12,6 +15,7 @@ const Benefits = (props) => {
             props.imgPos === "right" ? "lg:order-1" : ""
           }`}>
           <div>
+            {/* <VideoPlayer src={'/videos/video Email spell fix 3.5mb 60fps.mp4'}/> */}
             <Image
               src={data.image}
               width="521"

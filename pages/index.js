@@ -70,7 +70,7 @@ const Home = () => {
          
         </SectionTitle>
         <Benefits data={benefitOne} />
-        {/* <Benefits imgPos="right" data={benefitTwo} /> */}
+        <Benefits imgPos="right" data={benefitTwo} />
         <Subscribe/>
         <SectionTitle
           pretitle="Full tutorial to maximize productivity with the extension"

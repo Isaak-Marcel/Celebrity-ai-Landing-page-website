@@ -4,6 +4,7 @@ import {auth} from '../firebase'
 
 function Login({close}) {
   const [errorMessage, setErrorMessage] = useState('');
+  const [emailHasBeenSent, setEmailHasBeenSent] = useState('')
   const [loginUser,setloginUser] = useState({
         email: '',
         password: ''
@@ -12,7 +13,7 @@ function Login({close}) {
     
     const submitSignIn = (e)=>{
       e.preventDefault()
-        
+        setEmailHasBeenSent(false)
         signInWithEmailAndPassword(auth, loginUser.email, loginUser.password)
         .then((userCredential) =>{
             close()
@@ -32,20 +33,29 @@ function Login({close}) {
       sendPasswordResetEmail(auth, loginUser.email)
       .then(() => {
           console.log("Password reset email sent.");
-          setShowForgotEmail(false);
+          // setShowForgotEmail(false);
+          setEmailHasBeenSent(true)
+          setEmailHasBeenSent(loginUser.email) // Update this line
+          setErrorMessage(false)
       })
       .catch((error) => {
           const errorMsg = error.message;
           const cleanedErrorMsg = errorMsg.slice(errorMsg.indexOf(":") + 2, );
           setErrorMessage(cleanedErrorMsg);
+          setEmailHasBeenSent(false)
       });
     }
+    const handleClose = () =>{
+      setEmailHasBeenSent('') // Update this line
+      close()
+    }    
  
   return (
     <div className='popup flex justify-center'>
       {showForgotEmail ? (
         <div class="flex flex-col ">
           <h2 className='text-center'>Reset Password</h2>
+          {emailHasBeenSent && <p className=' text-green-500'>Email has been sent to {emailHasBeenSent}</p>}
           {errorMessage && <p className=" text-red-300 text-center text-sl pl-20 pr-20 ">{errorMessage}</p>} 
           <form className='flex flex-col'>
             <input  type='email' placeholder="Email" onChange={(e) => setloginUser({...loginUser, email: e.target.value})} />
@@ -53,6 +63,7 @@ function Login({close}) {
           </form>
           <div className='buttons-under' >
             <button onClick={ () => setShowForgotEmail(false)}>Back to Login</button>
+            <button onClick={handleClose}>close</button>
           </div>
         </div>
       ): (
@@ -66,8 +77,8 @@ function Login({close}) {
           </form>
           <div className='buttons-under' >
             <button onClick={ () =>close('signup')}>Don't have an account? Sign Up</button>
-            <button className='close-button' onClick={() => close()}>Close</button>
-            <button onClick={ () => setShowForgotEmail(true)}>Forgot Password?</button>
+            <button className='close-button' onClick={() => handleClose()}>Close</button>
+            <button onClick={ () => {setShowForgotEmail(true); setErrorMessage(false)}}>Forgot Password?</button>
           </div>
         </div> )
       }

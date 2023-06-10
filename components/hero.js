@@ -7,7 +7,7 @@ import { AuthContext } from './AuthContext';
 import Link from 'next/link';
 
 
-function VideoPlayer({ src }) {
+export const VideoPlayer = ({ src }) => {
   const [hovered, setHovered] = useState(false);
   const videoRef = useRef();
 
@@ -73,7 +73,7 @@ const Hero = ({ children }) => {
             {/* <h2 className="text-xl font-semibold leading-snug tracking-tight text-gray-800 lg:text-2xl lg:leading-tight xl:text2xl xl:leading-tight dark:text-white pb-10 ">This video shows 3 of our features Correct spelling, Imrpove Text and find best match</h2> */}
             <img>
             </img>
-            <VideoPlayer src='/videos/1920x1080 clean video Compressed.mp4'/>
+            <VideoPlayer src='/videos/clean video 3bit traget commpresed to 9mb.mp4'/>
        
           </div>
         </div>
