@@ -79,7 +79,7 @@ function Subscribe() {
                                 </svg >
                             </a>
                         </div>
-                        <div className="flex flex-col pb-4 w-full font-semibold">
+                        <div className="flex w-60 lg:w-80 rounded justify-center items-center flex-col pb-4 font-semibold">
                             {!subscriptionStatus && <SubButton style={ {width:'100%', height: '100%'}} plan={'paid'}/>}
                             {subscriptionStatus && <SubButton style={ {width:'100%', height: '100%'}} text="You are Subscibed, Manage Subscription here" send="toPortal"/>}
                        </div>

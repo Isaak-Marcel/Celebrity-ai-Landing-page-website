@@ -1,0 +1,26 @@
+.floating-label {
+    position: relative;
+  }
+  
+  .floating-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .placeholder {
+    position: absolute;
+    left: 10px;
+    top: 22px;                   
+    transition: 0.2s ease all;
+    opacity: 100%;
+    color: #aaaaaa;
+    @apply hover:cursor-text text-xl;
+    pointer-events: none;
+  }
+  
+  .focused {
+    transform: translateY(-35px);
+    font-size: 12px;
+    color: #aaaaaa
+  }
+  

@@ -11,12 +11,14 @@ import {
 
 import benefitOneImg from "../public/img/hero.png";
 import benefitTwoImg from "../public/img/benefit-one.png";
+import improveTextScreenShot from "../public/img/ImrpoveTextSreenShot 1000x900.png"
+import spellFixScreenShot from "../public/img/spellFix AI 791x562.png"
 
 const benefitOne = {
   title: "Some of our text operations",
   desc: `All of the following operations can be done by highlighting and right-clicking, or using a keyboard shortcut.
   They can all increase productivity massively if used correctly. (You can customize all the keyboard shortcuts.)`,
-  image: benefitOneImg,
+  image: spellFixScreenShot,
   bullets: [
     {
       title: "Fix all spelling",
@@ -39,7 +41,7 @@ const benefitOne = {
 const benefitTwo = {
   title: "Works on a multitude of websites",
   desc: "The Chrome extension works on websites such as Email, Grammarly, Youtube, FaceBook, Twitter, Wikipedia, and more.",
-  image: benefitTwoImg,
+  image: improveTextScreenShot,
   bullets: [
     {
       title: "Create a Custom Prompt",

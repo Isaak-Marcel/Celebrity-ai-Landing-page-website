@@ -149,7 +149,7 @@ function SubButton({plan='paid',text='Subscribe', send='checkOut' , style} ) {
                         {showLogin && <Login close={close} />}
                         {showSignup && <Signup close={close} />}
          </div>  }
-            <button style={style} className="logButton bg-orange-600 rounded  p-3 text-black " onClick={() => handleSubscribe()}>{text} </button>
+            <button style={style} className=" logButton rounded bg-orange-600 p-3 text-black " onClick={() => handleSubscribe()}>{text} </button>
             {loading ?  <Spinner/> :''}
            
           

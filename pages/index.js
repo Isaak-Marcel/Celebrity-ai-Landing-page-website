@@ -74,7 +74,7 @@ const Home = () => {
         <Subscribe/>
         <SectionTitle
           pretitle="Full tutorial to maximize productivity with the extension"
-          title="Learn how to the extension effectively">This is a video of me explaining the features of the extension, feel free to comment or send a message if you have suggestions for new features.
+          title="Learn how to use the extension effectively">This is a video of me explaining the features of the extension, feel free to comment or send a message if you have suggestions for new features.
         </SectionTitle>
         <Video />
         {/* <SectionTitle
