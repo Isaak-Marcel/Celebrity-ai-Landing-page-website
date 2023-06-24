@@ -118,7 +118,7 @@ export default function Footer() {
                 <Instagram />
               </a> */}
               <a
-                href="https://linkedin.com/"
+                href="https://www.linkedin.com/company/celerity-ai/"
                 target="_blank"
                 rel="noopener">
                 <span className="sr-only">Linkedin</span>
