@@ -58,7 +58,7 @@ function Subscribe() {
                         <h1 className='text-center text-xl pb-10'>You get all of the Celerity-AI text enhancer Featuers For 9$ a Month{/* user && user.email*/}  </h1>
                         <ul className='max-w-md space-y-1 text'>
                             <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500  flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                                Imporve Text </li>
+                                Improve Text </li>
                             <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500  flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                                 Fix Spelling </li>
                             <li className='flex items-center'> <svg class="w-8 h-8 mr-1 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
